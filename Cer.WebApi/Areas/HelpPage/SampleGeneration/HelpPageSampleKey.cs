@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 
-namespace Cer.WebApi.Areas.HelpPage
+namespace Cer.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This is used to identify the place where the sample should be applied.
@@ -18,7 +18,7 @@ namespace Cer.WebApi.Areas.HelpPage
         {
             if (mediaType == null)
             {
-                throw new ArgumentNullException("mediaType");
+                throw new ArgumentNullException(nameof(mediaType));
             }
 
             ActionName = String.Empty;
@@ -37,7 +37,7 @@ namespace Cer.WebApi.Areas.HelpPage
         {
             if (type == null)
             {
-                throw new ArgumentNullException("type");
+                throw new ArgumentNullException(nameof(type));
             }
 
             ParameterType = type;
@@ -54,19 +54,19 @@ namespace Cer.WebApi.Areas.HelpPage
         {
             if (!Enum.IsDefined(typeof(SampleDirection), sampleDirection))
             {
-                throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
+                throw new InvalidEnumArgumentException(nameof(sampleDirection), (int)sampleDirection, typeof(SampleDirection));
             }
             if (controllerName == null)
             {
-                throw new ArgumentNullException("controllerName");
+                throw new ArgumentNullException(nameof(controllerName));
             }
             if (actionName == null)
             {
-                throw new ArgumentNullException("actionName");
+                throw new ArgumentNullException(nameof(actionName));
             }
             if (parameterNames == null)
             {
-                throw new ArgumentNullException("parameterNames");
+                throw new ArgumentNullException(nameof(parameterNames));
             }
 
             ControllerName = controllerName;
@@ -88,7 +88,7 @@ namespace Cer.WebApi.Areas.HelpPage
         {
             if (mediaType == null)
             {
-                throw new ArgumentNullException("mediaType");
+                throw new ArgumentNullException(nameof(mediaType));
             }
 
             MediaType = mediaType;

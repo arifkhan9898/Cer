@@ -15,21 +15,23 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 using StructureMap;
 using StructureMap.Graph;
-namespace Cer.WebUi.DependencyResolution {
-    public static class IoC {
-        public static IContainer Initialize() {
+namespace Cer.WebUi.DependencyResolution
+{
+    public static class IoC
+    {
+        public static IContainer Initialize()
+        {
             ObjectFactory.Initialize(x =>
-                        {
-                            x.Scan(scan =>
-                                    {
-                                        scan.TheCallingAssembly();
-                                        scan.WithDefaultConventions();
-                                    });
-            //                x.For<IExample>().Use<Example>();
-                        });
+            {
+                x.Scan(scan =>
+                {
+                    scan.TheCallingAssembly();
+                    scan.WithDefaultConventions();
+
+                });
+            });
             return ObjectFactory.Container;
         }
     }

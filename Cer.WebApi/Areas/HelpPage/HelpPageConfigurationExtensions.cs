@@ -13,6 +13,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using Cer.WebApi.Areas.HelpPage.ModelDescriptions;
 using Cer.WebApi.Areas.HelpPage.Models;
+using Cer.WebApi.Areas.HelpPage.SampleGeneration;
 
 namespace Cer.WebApi.Areas.HelpPage
 {

@@ -17,12 +17,13 @@
 
 using System.Web.Http;
 using System.Web.Mvc;
-using StructureMap;
+using Cer.WebApi;
 using Cer.WebApi.DependencyResolution;
+using StructureMap;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(Cer.WebApi.App_Start.StructuremapMvc), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 
-namespace Cer.WebApi.App_Start {
+namespace Cer.WebApi {
     public static class StructuremapMvc {
         public static void Start() {
 			IContainer container = IoC.Initialize();

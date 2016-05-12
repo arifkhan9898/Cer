@@ -1,6 +1,6 @@
 using System;
 
-namespace Cer.WebApi.Areas.HelpPage
+namespace Cer.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
@@ -11,7 +11,7 @@ namespace Cer.WebApi.Areas.HelpPage
         {
             if (text == null)
             {
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException(nameof(text));
             }
             Text = text;
         }

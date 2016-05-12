@@ -40,22 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\IDeleteRepository.cs" />
-    <Compile Include="Abstractions\IIdentifyRepository.cs" />
-    <Compile Include="Abstractions\IListRepository.cs" />
-    <Compile Include="Abstractions\IReadRepository.cs" />
-    <Compile Include="Abstractions\IRepository.cs" />
-    <Compile Include="Abstractions\IWriteRepository.cs" />
+    <Compile Include="Interfaces\IReadRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IWriteRepository.cs" />
     <Compile Include="DataTransferObjects\RentalDto.cs" />
-    <Compile Include="Interfaces\IRentItemService.cs" />
-    <Compile Include="Interfaces\IMessageProvider.cs" />
-    <Compile Include="Abstractions\IIdentifiableEntity.cs" />
     <Compile Include="DataTransferObjects\InvoiceDto.cs" />
-    <Compile Include="Interfaces\IInvoiceService.cs" />
+    <Compile Include="Abstractions\BaseEntity.cs" />
+    <Compile Include="Interfaces\IBaseEntity.cs" />
+    <Compile Include="Services\IRentalService.cs" />
     <Compile Include="Models\RentEquipmentItem.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\EquipmentItem.cs" />
-    <Compile Include="Models\RentItem.cs" />
+    <Compile Include="Models\RentCart.cs" />
     <Compile Include="Models\RentState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

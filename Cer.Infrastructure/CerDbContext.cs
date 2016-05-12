@@ -1,23 +1,36 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
+using System.Linq;
+using System.Reflection;
 using Cer.Core.Abstractions;
-using Cer.Core.Models;
 
 namespace Cer.Infrastructure
 {
-    public class CerDbContext : DbContext
+    public class CerDbContext : DbContext, IDbContext
     {
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<EquipmentItem> EquipmentItems { get; set; }
-        public DbSet<RentItem> RentItems { get; set; }
-        public DbSet<RentState> RentStates { get; set; }
-        public DbSet<RentEquipmentItem> RentEquipmentItems { get; set; }
+        public CerDbContext() : base("name=CerDbContext")
+        {
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+            .Where(type => !string.IsNullOrEmpty(type.Namespace))
+            .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
+            type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
+            foreach (var type in typesToRegister)
+            {
+                dynamic configurationInstance = Activator.CreateInstance(type);
+                modelBuilder.Configurations.Add(configurationInstance);
+            }
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Ignore<IIdentifiableEntity<int>>();
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
+        {
+            return base.Set<TEntity>();
         }
     }
 }

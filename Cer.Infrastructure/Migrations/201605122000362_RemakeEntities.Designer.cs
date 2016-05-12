@@ -7,13 +7,13 @@ namespace Cer.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddRentState : IMigrationMetadata
+    public sealed partial class RemakeEntities : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRentState));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemakeEntities));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605120945148_AddRentState"; }
+            get { return "201605122000362_RemakeEntities"; }
         }
         
         string IMigrationMetadata.Source

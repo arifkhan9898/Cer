@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Cer.Core.Models;
 
 namespace Cer.Infrastructure.Migrations
@@ -17,52 +16,89 @@ namespace Cer.Infrastructure.Migrations
 
         protected override void Seed(Cer.Infrastructure.CerDbContext context)
         {
+            //  This method will be called after migrating to the latest version.
+
             var moments = new[]
             {
                 new DateTime(2010, 10, 10, 12, 0, 1),
                 new DateTime(2010, 10, 12, 14, 0, 1)
             };
-            var customers = new[] {
-                new Customer { CustomerId = 1, Nickname = "Jane Austen"},
-                new Customer { CustomerId = 2, Nickname = "Charles Dickens" },
-                new Customer { CustomerId = 3, Nickname = "Miguel de Cervantes" }
-            };
-            var equipmentItems = new[] {
-                new EquipmentItem { EquipmentItemId = 1, ItemType = 0, ItemName = "Caterpillar bulldozer" },
-                new EquipmentItem { EquipmentItemId = 2, ItemType = 1, ItemName = "KamAZ truck"},
-                new EquipmentItem { EquipmentItemId = 3, ItemType = 0, ItemName = "Komatsu crane" },
-                new EquipmentItem { EquipmentItemId = 4, ItemType = 1, ItemName = "Volvo steamroller" },
-                new EquipmentItem { EquipmentItemId = 5, ItemType = 2, ItemName = "Bosch jackhammer" }
-            };
-            var rentStates = new[] {
-                new RentState { RentStateId = 1, State = "Completed" },
-                new RentState { RentStateId = 2, State = "In progress" },
-                new RentState { RentStateId = 3, State = "Overdue" }
-            };
-            var rentItems = new[] {
-                new RentItem
+            var equipmentItems = new[]
+            {
+                new EquipmentItem
                 {
-                    RentItemId =  1,
-                    Customer = customers[1],
-                    RentDurationDays = 2,
-                    RentDateAdded = moments[0]
+                    Id = 1,
+                    ItemType = 0,
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0],
+                    ItemName = "Caterpillar bulldozer"
+                },
+                new EquipmentItem
+                {
+                    Id = 2,
+                    ItemType = 1,
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0],
+                    ItemName = "KamAZ truck"
+                },
+                new EquipmentItem
+                {
+                    Id = 3,
+                    ItemType = 0,
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0],
+                    ItemName = "Komatsu crane"
+                },
+                new EquipmentItem
+                {
+                    Id = 4,
+                    ItemType = 1,
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0],
+                    ItemName = "Volvo steamroller"
+                },
+                new EquipmentItem
+                {
+                    Id = 5,
+                    ItemType = 2,
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0],
+                    ItemName = "Bosch jackhammer"
                 }
             };
-            var rentEquipmentItems = new[] {
+            var rentStates = new[]
+            {
+                new RentState {Id = 1, AddedDate = moments[0], ModifiedDate = moments[0], State = "Completed"},
+                new RentState {Id = 2, AddedDate = moments[0], ModifiedDate = moments[0], State = "In progress"},
+                new RentState {Id = 3, AddedDate = moments[0], ModifiedDate = moments[0], State = "Overdue"}
+            };
+            var rentItems = new[]
+            {
+                new RentCart
+                {
+                    Id = 1,
+                    CustomerNickname = "Miguel de Cervantes",
+                    RentDurationDays = 2,
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0]
+                }
+            };
+            var rentEquipmentItems = new[]
+            {
                 new RentEquipmentItem
                 {
-                    RentEquipmentItemId = 1,
-                    RentItem = rentItems[0],
+                    Id = 1,
+                    RentCart = rentItems[0],
                     EquipmentItem = equipmentItems[1],
                     RentState = rentStates[1],
-                    RentStateLastUpdate = moments[0]
+                    AddedDate = moments[0],
+                    ModifiedDate = moments[0]
                 }
             };
-            context.Customers.AddOrUpdate(x => x.CustomerId, customers);
-            context.EquipmentItems.AddOrUpdate(x => x.EquipmentItemId, equipmentItems);
-            context.RentStates.AddOrUpdate(x => x.RentStateId, rentStates);
-            context.RentItems.AddOrUpdate(x => x.RentItemId, rentItems);
-            context.RentEquipmentItems.AddOrUpdate(x => x.RentEquipmentItemId, rentEquipmentItems);
+            context.Set<EquipmentItem>().AddOrUpdate(x => x.Id, equipmentItems);
+            context.Set<RentState>().AddOrUpdate(x => x.Id, rentStates);
+            context.Set<RentCart>().AddOrUpdate(x => x.Id, rentItems);
+            context.Set<RentEquipmentItem>().AddOrUpdate(x => x.Id, rentEquipmentItems);
         }
     }
 }

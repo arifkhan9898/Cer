@@ -56,6 +56,12 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 - [x] Add WebApi consumer primitive service implementation in DI friendly manner
 - [x] Update seed data
 
+### v. 0.1.0
+- [x] Remake core
+- [x] Fix structuremap references
+- [x] Update seed data
+- [x] WebApi returns returns list of equipment
+
 ## Todo
 - [ ] Add localization 
 - [ ] Utf8 or alternative support in database 

@@ -1,6 +1,6 @@
 using System;
 
-namespace Cer.WebApi.Areas.HelpPage
+namespace Cer.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
@@ -15,7 +15,7 @@ namespace Cer.WebApi.Areas.HelpPage
         {
             if (src == null)
             {
-                throw new ArgumentNullException("src");
+                throw new ArgumentNullException(nameof(src));
             }
             Src = src;
         }

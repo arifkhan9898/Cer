@@ -2,15 +2,8 @@
 
 namespace Cer.Core.Models
 {
-    public class RentState : IIdentifiableEntity<int>
+    public class RentState : BaseEntity
     {
-        public int RentStateId { get; set; }
         public string State { get; set; }
-
-        public int EntityId
-        {
-            get { return RentStateId; }
-            set { RentStateId = value; }
-        }
     }
 }

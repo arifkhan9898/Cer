@@ -15,21 +15,33 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-
+using System.Data.Entity;
+using Cer.Core.Interfaces;
+using Cer.Core.Services;
+using Cer.Infrastructure;
+using Cer.Infrastructure.Data;
+using Cer.Infrastructure.Services;
 using StructureMap;
 using StructureMap.Graph;
-namespace Cer.WebApi.DependencyResolution {
-    public static class IoC {
-        public static IContainer Initialize() {
+namespace Cer.WebApi.DependencyResolution
+{
+    public static class IoC
+    {
+        public static IContainer Initialize()
+        {
             ObjectFactory.Initialize(x =>
-                        {
-                            x.Scan(scan =>
-                                    {
-                                        scan.TheCallingAssembly();
-                                        scan.WithDefaultConventions();
-                                    });
-            //                x.For<IExample>().Use<Example>();
-                        });
+            {
+                x.Scan(scan =>
+                {
+                    scan.TheCallingAssembly();
+                    scan.WithDefaultConventions();
+                    scan.AssemblyContainingType<IRentalService>();   // Core
+                    scan.AssemblyContainingType<RentalService>();    // Infrastructure
+                });
+                x.For(typeof(IRepository<>)).Use(typeof(Repository<>));
+                x.For(typeof(IDbContext)).Use(typeof(CerDbContext));
+            });
+     
             return ObjectFactory.Container;
         }
     }
