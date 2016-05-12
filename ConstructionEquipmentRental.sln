@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cer.Core", "Core\Cer.Core.csproj", "{BAA64AF4-3871-408A-9420-5A526BCC2BB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cer.Core", "Cer.Core\Cer.Core.csproj", "{BAA64AF4-3871-408A-9420-5A526BCC2BB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cer.Infrastructure", "Infrastructure\Cer.Infrastructure.csproj", "{413D0887-9C4F-4E95-85B4-6D082557AFEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cer.Infrastructure", "Cer.Infrastructure\Cer.Infrastructure.csproj", "{413D0887-9C4F-4E95-85B4-6D082557AFEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cer.WebUi", "Cer.WebUi\Cer.WebUi.csproj", "{E5BA8E98-18EF-4B73-B189-3D6FB980F44A}"
 EndProject
