@@ -189,9 +189,9 @@
       <Project>{baa64af4-3871-408a-9420-5a526bcc2bb3}</Project>
       <Name>Cer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cer.Infrastructure\Cer.Infrastructure.csproj">
+    <ProjectReference Include="..\Cer.Infrastructure\Cer.EfProvider.csproj">
       <Project>{413d0887-9c4f-4e95-85b4-6d082557afee}</Project>
-      <Name>Cer.Infrastructure</Name>
+      <Name>Cer.EfProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -8,12 +8,9 @@ namespace Cer.Core.Models
     {
         public int RentItemId { get; set; }
         public Customer Customer { get; set; }
-        public List<EquipmentItem> EquipmentItems { get; set; }
-        public DateTime Borrowed { get; set; }
-        public DateTime? Returned { get; set; }
+        public virtual ICollection<RentEquipmentItem> RentEquipmentItems { get; set; }
         public int RentDurationDays { get; set; }
         public DateTime RentDateAdded { get; set; }
-        // shadow property timestamp
 
         public int EntityId
         {

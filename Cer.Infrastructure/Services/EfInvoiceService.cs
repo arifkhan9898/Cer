@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using Cer.Core.Abstractions;
 using Cer.Core.DataTransferObjects;
 using Cer.Core.Interfaces;
 using Cer.Core.Models;
 
-namespace Cer.Core.Services
+namespace Cer.Infrastructure.Services
 {
-    public class InvoiceService : IInvoiceService
+    public class EfInvoiceService : IInvoiceService
     {
         private readonly IReadRepository<RentItem, int> _rentItemRepository;
 
-        public InvoiceService(IReadRepository<RentItem, int> rentItemRepository)
+        public EfInvoiceService(IReadRepository<RentItem, int> rentItemRepository)
         {
             _rentItemRepository = rentItemRepository;
         }

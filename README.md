@@ -46,8 +46,18 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 - [x] Add integration test project 
 - [x] Add todo section in readme
 
+### v. 0.0.5
+- [x] Add folder structure
+- [x] Remove inadequate localisation support 
+- [x] Add support for returning subset items
+- [x] Add support for rent item loan state
+- [x] Add WebApi project and add IoC
+- [x] Add WebApi consumer project
+- [x] Add WebApi consumer primitive service implementation in DI friendly manner
+- [x] Update seed data
+
 ## Todo
-- [ ] Fix localization 
+- [ ] Add localization 
 - [ ] Utf8 or alternative support in database 
 - [ ] Logging
 - [ ] Decent-looking UI

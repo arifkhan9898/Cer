@@ -47,14 +47,16 @@
     <Compile Include="Abstractions\IRepository.cs" />
     <Compile Include="Abstractions\IWriteRepository.cs" />
     <Compile Include="DataTransferObjects\RentalDto.cs" />
+    <Compile Include="Interfaces\IRentItemService.cs" />
     <Compile Include="Interfaces\IMessageProvider.cs" />
     <Compile Include="Abstractions\IIdentifiableEntity.cs" />
     <Compile Include="DataTransferObjects\InvoiceDto.cs" />
     <Compile Include="Interfaces\IInvoiceService.cs" />
-    <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Models\RentEquipmentItem.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\EquipmentItem.cs" />
     <Compile Include="Models\RentItem.cs" />
+    <Compile Include="Models\RentState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
