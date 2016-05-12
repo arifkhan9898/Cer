@@ -1,7 +1,7 @@
 # Construction equipment rental (shorthand : cer)   
 ## Short overview
 * MVC 4 
-* EF 6 (code first)
+* EF 6.1.3 (code first)
 
 ## What is required to run this project
 * Visual Studio 2015 with update 1.
@@ -9,6 +9,14 @@
 ## How to run tests
 0. Press F6 *(to build project), tests are set to run after build. 
 1. Use "Test - Windows - Test Expolorer" select feature "Run Tests after build" and F6 (to build).
+
+## How to initialize database
+Open nugget package manager console, with `src\Cer.Infrastructure` and type `Update-Database`. 
+
+Like shown on image.
+![alt tag](http://i.imgur.com/SdJzhFU.png?1)
+
+This assumes you have admin rights in the server, if you do not, acquire them or change connection string.
 
 ## Progress
 ### v. 0.0.1 
@@ -27,3 +35,21 @@
 
 ### v. 0.0.3
 - [x] Fixed ReadMe.md
+
+### v. 0.0.4
+- [x] Add EF to infrastructure
+- [x] Add connection string
+- [x] Add Code first migration
+- [x] Create some seed data
+- [x] Deploy to database 
+- [x] Add unit test project
+- [x] Add integration test project 
+- [x] Add todo section in readme
+
+## Todo
+- [ ] Fix localization 
+- [ ] Utf8 or alternative support in database 
+- [ ] Logging
+- [ ] Decent-looking UI
+- [ ] Caching
+- [ ] Class and interaction diagrams
