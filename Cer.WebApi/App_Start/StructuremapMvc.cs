@@ -29,6 +29,7 @@ namespace Cer.WebApi {
 			IContainer container = IoC.Initialize();
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
+            GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpFormatter());
         }
     }
 }

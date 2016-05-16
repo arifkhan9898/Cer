@@ -5,6 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using Cer.Core.Abstractions;
 using Cer.Core.Interfaces;
+using Cer.Infrastructure.Interfaces;
 
 namespace Cer.Infrastructure.Data
 {

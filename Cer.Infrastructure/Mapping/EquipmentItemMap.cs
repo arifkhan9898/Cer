@@ -3,12 +3,12 @@ using Cer.Core.Models;
 
 namespace Cer.Infrastructure.Mapping
 {
-    public class EquipmentItemMap : EntityTypeConfiguration<EquipmentItem>
+    public class EquipmentMap : EntityTypeConfiguration<Equipment>
     {
-        public EquipmentItemMap()
+        public EquipmentMap()
         {        
-            Property(t => t.ItemType).IsRequired();
-            Property(t => t.ItemName).IsRequired();
+            Property(t => t.EquipmentType).IsRequired();
+            Property(t => t.EquipmentName).IsRequired();
         }
     }
 }

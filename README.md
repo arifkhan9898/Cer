@@ -62,7 +62,18 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 - [x] Update seed data
 - [x] WebApi returns returns list of equipment
 
+### v. 0.1.1
+- [x] Add ui
+- [x] Update core models
+- [x] Add enums to replace some models
+- [x] Verify that enums are stored correctly in database and ui
+- [x] Enable web api proxy to handle jsonp requests
+- [x] Verify that documentation web api proxy is correctly generated
+- [x] Update seed data
+- [x] Wire ui grid component to use jsonp provided by web api proxy
+
 ## Todo
+- [ ] Tests
 - [ ] Add localization 
 - [ ] Utf8 or alternative support in database 
 - [ ] Logging

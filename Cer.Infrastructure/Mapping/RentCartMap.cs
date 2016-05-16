@@ -3,7 +3,7 @@ using Cer.Core.Models;
 
 namespace Cer.Infrastructure.Mapping
 {
-    public class RentCartMap : EntityTypeConfiguration<RentCart>
+    public class RentCartMap : EntityTypeConfiguration<Cart>
     {
         public RentCartMap()
         {

@@ -1,20 +1,20 @@
-using Cer.Core.Models;
-
 namespace Cer.Infrastructure.Migrations
 {
+    using Core.Enum;
+    using Core.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Cer.Infrastructure.CerDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Cer.Infrastructure.Contextes.CerDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Cer.Infrastructure.CerDbContext context)
+        protected override void Seed(Contextes.CerDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -23,61 +23,73 @@ namespace Cer.Infrastructure.Migrations
                 new DateTime(2010, 10, 10, 12, 0, 1),
                 new DateTime(2010, 10, 12, 14, 0, 1)
             };
+            var amount = new EquipmentAmount
+            {
+                Id = 1,
+                Amount = 1,
+                AddedDate = moments[0],
+                ModifiedDate = moments[0]
+            };
             var equipmentItems = new[]
             {
-                new EquipmentItem
+                new Equipment
                 {
                     Id = 1,
-                    ItemType = 0,
+                    EquipmentType = EquipmentType.Heavy,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0],
-                    ItemName = "Caterpillar bulldozer"
+                    EquipmentName = "Caterpillar bulldozer",
+                    EquipmentAmount = amount
                 },
-                new EquipmentItem
+                new Equipment
                 {
                     Id = 2,
-                    ItemType = 1,
+                    EquipmentType = EquipmentType.Regular,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0],
-                    ItemName = "KamAZ truck"
+                    EquipmentName = "KamAZ truck"
                 },
-                new EquipmentItem
+                new Equipment
                 {
                     Id = 3,
-                    ItemType = 0,
+                    EquipmentType = EquipmentType.Heavy,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0],
-                    ItemName = "Komatsu crane"
+                    EquipmentName = "Komatsu crane",
+                    EquipmentAmount = amount
                 },
-                new EquipmentItem
+                new Equipment
                 {
                     Id = 4,
-                    ItemType = 1,
+                    EquipmentType = EquipmentType.Regular,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0],
-                    ItemName = "Volvo steamroller"
+                    EquipmentName = "Volvo steamroller",
+                    EquipmentAmount = amount
                 },
-                new EquipmentItem
+                new Equipment
                 {
                     Id = 5,
-                    ItemType = 2,
+                    EquipmentType = EquipmentType.Specialized,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0],
-                    ItemName = "Bosch jackhammer"
+                    EquipmentName = "Bosch jackhammer",
+                    EquipmentAmount = amount
                 }
             };
-            var rentStates = new[]
+            var user = new User
             {
-                new RentState {Id = 1, AddedDate = moments[0], ModifiedDate = moments[0], State = "Completed"},
-                new RentState {Id = 2, AddedDate = moments[0], ModifiedDate = moments[0], State = "In progress"},
-                new RentState {Id = 3, AddedDate = moments[0], ModifiedDate = moments[0], State = "Overdue"}
+                Id = 1,
+                AddedDate = moments[0],
+                ModifiedDate = moments[0],
+                NickName = "Miguel de Cervantes"
             };
             var rentItems = new[]
             {
-                new RentCart
+                new Cart
                 {
                     Id = 1,
-                    CustomerNickname = "Miguel de Cervantes",
+                    User = user,
                     RentDurationDays = 2,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0]
@@ -85,20 +97,20 @@ namespace Cer.Infrastructure.Migrations
             };
             var rentEquipmentItems = new[]
             {
-                new RentEquipmentItem
+                new CartEquipment
                 {
                     Id = 1,
-                    RentCart = rentItems[0],
-                    EquipmentItem = equipmentItems[1],
-                    RentState = rentStates[1],
+                    Cart = rentItems[0],
+                    Equipment = equipmentItems[1],
+                    RentState = RentState.Running,
                     AddedDate = moments[0],
                     ModifiedDate = moments[0]
                 }
             };
-            context.Set<EquipmentItem>().AddOrUpdate(x => x.Id, equipmentItems);
-            context.Set<RentState>().AddOrUpdate(x => x.Id, rentStates);
-            context.Set<RentCart>().AddOrUpdate(x => x.Id, rentItems);
-            context.Set<RentEquipmentItem>().AddOrUpdate(x => x.Id, rentEquipmentItems);
+            context.Set<User>().AddOrUpdate(x => x.Id, user);
+            context.Set<Equipment>().AddOrUpdate(x => x.Id, equipmentItems);
+            context.Set<Cart>().AddOrUpdate(x => x.Id, rentItems);
+            context.Set<CartEquipment>().AddOrUpdate(x => x.Id, rentEquipmentItems);
         }
     }
 }

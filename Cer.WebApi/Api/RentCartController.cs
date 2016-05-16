@@ -1,6 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using Cer.Core.Dtos;
+using Cer.Core.Interfaces.Services;
 using Cer.Core.Models;
-using Cer.Core.Services;
 
 namespace Cer.WebApi.Api
 {
@@ -8,15 +10,14 @@ namespace Cer.WebApi.Api
     {
         private readonly IRentalService _rentalService;
 
-        public RentCartController(IRentalService rentalService )
+        public RentCartController(IRentalService rentalService)
         {
             _rentalService = rentalService;
         }
 
-        public RentCart Get(int[] ids)
+        public CartDto Get(int[] ids, DateTime viewStateTime)
         {
-            return _rentalService.SubmitOrder(ids);
+            return _rentalService.SubmitRentRequest(ids, viewStateTime);
         }
-
     }
 }

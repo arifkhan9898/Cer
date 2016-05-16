@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using Cer.Core.DataTransferObjects;
-using Cer.Core.Models;
-using Cer.Core.Services;
+using Cer.Core.Dtos;
+using Cer.Core.Interfaces.Services;
 
 namespace Cer.WebApiConsumer
 {
@@ -14,34 +14,49 @@ namespace Cer.WebApiConsumer
             _client = client;
         }
 
-        public IEnumerable<EquipmentItem> GetAvailableEquipmentItems()
-        {
-            var request = $"api/Rental";
-            var response = _client.GetAsync(request).Result;
+        //public IEnumerable<Equipment> GetAvailableEquipment()
+        //{
+        //    var request = $"api/Rental";
+        //    var response = _client.GetAsync(request).Result;
 
-            return response.IsSuccessStatusCode
-                 ? response.Content.ReadAsAsync<IEnumerable<EquipmentItem>>().Result
-                 : null;
-        }
+        //    return response.IsSuccessStatusCode
+        //         ? response.Content.ReadAsAsync<IEnumerable<Equipment>>().Result
+        //         : null;
+        //}
 
-        public RentCart SubmitOrder(int[] ids)
-        {
-            var request = $"api/Rental";
-            var response = _client.GetAsync(request).Result;
+        //public Cart SubmitRentRequest(IEnumerable<int> ids)
+        //{
+        //    var request = $"api/Rental";
+        //    var response = _client.GetAsync(request).Result;
 
-            return response.IsSuccessStatusCode
-                 ? response.Content.ReadAsAsync<RentCart>().Result
-                 : null;
-        }
+        //    return response.IsSuccessStatusCode
+        //         ? response.Content.ReadAsAsync<Cart>().Result
+        //         : null;
+        //}
 
-        public InvoiceDto GetInvoice(RentCart rentCart)
-        {
-            var request = $"api/Rental/{rentCart.Id}";
-            var response = _client.GetAsync(request).Result;
+        //public InvoiceDto GetInvoice(Cart cart)
+        //{
+        //    var request = $"api/Rental/{cart.Id}";
+        //    var response = _client.GetAsync(request).Result;
             
-            return response.IsSuccessStatusCode
-                 ? response.Content.ReadAsAsync<InvoiceDto>().Result
-                 : null;
+        //    return response.IsSuccessStatusCode
+        //         ? response.Content.ReadAsAsync<InvoiceDto>().Result
+        //         : null;
+        //}
+
+        public EquipmentViewDto GetAvailableEquipmentWithPaging(int skip = 0, int take = 20)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CartDto SubmitRentRequest(IEnumerable<int> ids, DateTime viewStateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public InvoiceDto GetInvoice(CartDto cart)
+        {
+            throw new NotImplementedException();
         }
     }
 }

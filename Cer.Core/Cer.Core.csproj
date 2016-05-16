@@ -31,7 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,18 +42,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\BaseDto.cs" />
+    <Compile Include="Dtos\CartDto.cs" />
+    <Compile Include="Dtos\EquipmentViewDto.cs" />
+    <Compile Include="Dtos\EquipmentDto.cs" />
+    <Compile Include="Dtos\ViewDto.cs" />
+    <Compile Include="Enum\RentState.cs" />
+    <Compile Include="Enum\EquipmentType.cs" />
+    <Compile Include="Models\EquipmentAmount.cs" />
+    <Compile Include="Interfaces.Models\IEquipmentAmount.cs" />
+    <Compile Include="Interfaces\IDateTimeProvider.cs" />
+    <Compile Include="Interfaces\IIdentifiable.cs" />
+    <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Interfaces\IReadRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IWriteRepository.cs" />
-    <Compile Include="DataTransferObjects\RentalDto.cs" />
-    <Compile Include="DataTransferObjects\InvoiceDto.cs" />
+    <Compile Include="Dtos\RentalDto.cs" />
+    <Compile Include="Dtos\InvoiceDto.cs" />
     <Compile Include="Abstractions\BaseEntity.cs" />
     <Compile Include="Interfaces\IBaseEntity.cs" />
-    <Compile Include="Services\IRentalService.cs" />
-    <Compile Include="Models\RentEquipmentItem.cs" />
-    <Compile Include="Models\EquipmentItem.cs" />
-    <Compile Include="Models\RentCart.cs" />
-    <Compile Include="Models\RentState.cs" />
+    <Compile Include="Interfaces.Models\IEquipment.cs" />
+    <Compile Include="Interfaces.Models\ICartEquipment.cs" />
+    <Compile Include="Interfaces.Models\IUser.cs" />
+    <Compile Include="Interfaces.Models\ICart.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Interfaces.Services\IRentalService.cs" />
+    <Compile Include="Models\CartEquipment.cs" />
+    <Compile Include="Models\Equipment.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

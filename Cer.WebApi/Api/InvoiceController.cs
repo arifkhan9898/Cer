@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
-using Cer.Core.DataTransferObjects;
+using Cer.Core.Dtos;
+using Cer.Core.Interfaces.Services;
 using Cer.Core.Models;
-using Cer.Core.Services;
 
 namespace Cer.WebApi.Api
 {
@@ -14,7 +14,7 @@ namespace Cer.WebApi.Api
             _rentalService = rentalService;
         }
         
-        public InvoiceDto GetInvoice(RentCart id)
+        public InvoiceDto GetInvoice(CartDto id)
         {
             return _rentalService.GetInvoice(id);
         }
