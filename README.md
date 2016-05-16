@@ -70,7 +70,11 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 - [x] Enable web api proxy to handle jsonp requests
 - [x] Verify that documentation web api proxy is correctly generated
 - [x] Update seed data
-- [x] Wire ui grid component to use jsonp provided by web api proxy
+- [x] Wire ui grid component ExtJs to use jsonp provided by web api proxy
+
+### v. 0.1.2
+- [x] Implemented business logic 
+- [x] Add nlog to webapi and webui 
 
 ## Todo
 - [ ] Tests

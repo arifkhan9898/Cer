@@ -40,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapEquipmentDto.cs" />
-    <Compile Include="MapEquipmentViewDto.cs" />
+    <Compile Include="Logics\IPriceCalculatorLogic.cs" />
+    <Compile Include="Logics\HeavyPriceCalculatorLogic.cs" />
+    <Compile Include="Logics\ILoyaltyPointsLogic.cs" />
+    <Compile Include="Logics\LoyaltyPointsLogic.cs" />
+    <Compile Include="Logics\PriceCalculatorLogic.cs" />
+    <Compile Include="Logics\RegularPriceCalculatorLogic.cs" />
+    <Compile Include="Logics\SpecializedPriceCalculatorLogic.cs" />
+    <Compile Include="Maps\MapEquipmentDto.cs" />
+    <Compile Include="Maps\MapEquipmentViewDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalService.cs" />
     <Compile Include="TimeProvider.cs" />
@@ -50,6 +57,10 @@
     <ProjectReference Include="..\Cer.Core\Cer.Core.csproj">
       <Project>{BAA64AF4-3871-408A-9420-5A526BCC2BB3}</Project>
       <Name>Cer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cer.Infrastructure\Cer.EfProvider.csproj">
+      <Project>{413D0887-9C4F-4E95-85B4-6D082557AFEE}</Project>
+      <Name>Cer.EfProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

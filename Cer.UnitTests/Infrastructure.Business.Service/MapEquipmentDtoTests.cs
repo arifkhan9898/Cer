@@ -4,6 +4,7 @@ using Cer.Core.Enum;
 using Cer.Core.Interfaces;
 using Cer.Core.Models;
 using Cer.Service;
+using Cer.Service.Maps;
 using FluentAssertions;
 using NUnit.Framework;
 

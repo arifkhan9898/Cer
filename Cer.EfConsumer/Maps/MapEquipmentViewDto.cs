@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cer.Core.Dtos;
 using Cer.Core.Interfaces;
 
-namespace Cer.Service
+namespace Cer.Service.Maps
 {
     public class MapEquipmentViewDto : IMapper<IEnumerable<EquipmentDto>, ViewDto, EquipmentViewDto>
     {

@@ -7,8 +7,8 @@ namespace Cer.Core.Dtos
     public class RentalDto : BaseDto
     {
         [DataMember]
-        public string Name { get; private set; }
+        public string Name { get; internal set; }
         [DataMember]
-        public decimal Price { get; private set; }
+        public decimal Price { get; internal set; }
     }
 }

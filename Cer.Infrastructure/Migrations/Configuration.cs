@@ -104,7 +104,8 @@ namespace Cer.Infrastructure.Migrations
                     Equipment = equipmentItems[1],
                     RentState = RentState.Running,
                     AddedDate = moments[0],
-                    ModifiedDate = moments[0]
+                    ModifiedDate = moments[0],
+                    RentDurationDays = 4
                 }
             };
             context.Set<User>().AddOrUpdate(x => x.Id, user);

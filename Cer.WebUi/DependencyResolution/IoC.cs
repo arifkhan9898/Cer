@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Cer.Core.Dtos;
+using Cer.Core.Enum;
 using Cer.Core.Interfaces;
 using Cer.Core.Interfaces.Services;
 using Cer.Core.Models;
@@ -23,6 +24,8 @@ using Cer.Infrastructure.Contextes;
 using Cer.Infrastructure.Data;
 using Cer.Infrastructure.Interfaces;
 using Cer.Service;
+using Cer.Service.Logics;
+using Cer.Service.Maps;
 using StructureMap;
 using StructureMap.Graph;
 namespace Cer.WebUi.DependencyResolution
@@ -44,7 +47,10 @@ namespace Cer.WebUi.DependencyResolution
                 x.For(typeof(IRepository<>)).Use(typeof(Repository<>));
                 x.For(typeof(IDbContext)).Use(typeof(CerDbContext));
                 x.For(typeof(IRentalService)).Use(typeof(RentalService));
+                x.For(typeof(IWriteDbContext)).Use(typeof(CerDbContext));
                 x.For(typeof(IMapper<Equipment, EquipmentDto>)).Use(typeof(MapEquipmentDto));
+                x.For(typeof(IMapper<EquipmentType, PriceCalculatorLogic>)).Use(typeof(MapPriceCalculatorLogic));
+         
             });
 
             return ObjectFactory.Container;

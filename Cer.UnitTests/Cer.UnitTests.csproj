@@ -69,6 +69,10 @@
       <Project>{9BB30498-9974-44FB-942E-B28495264116}</Project>
       <Name>Cer.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cer.Infrastructure\Cer.EfProvider.csproj">
+      <Project>{413D0887-9C4F-4E95-85B4-6D082557AFEE}</Project>
+      <Name>Cer.EfProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

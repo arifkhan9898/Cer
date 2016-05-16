@@ -10,5 +10,6 @@ namespace Cer.Core.Interfaces.Models
         Cart Cart { get; set; }
         RentState RentState { get; set; }
         DateTime? ReturnDate { get; set; }
+        int RentDurationDays { get; set; }
     }
 }

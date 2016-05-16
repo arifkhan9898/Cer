@@ -7,9 +7,10 @@ namespace Cer.Core.Dtos
     [DataContract]
     public class CartDto : BaseDto
     {
+        //[DataMember]
+        //public IEnumerable<int> CartEquipmentIds { get; private set; }
+
         [DataMember]
-        public IEnumerable<int> EquipmentIds { get; private set; }
-        [DataMember]
-        public long Id { get; private set; }
+        public long CartId { get; internal set; }
     }
 }

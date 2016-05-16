@@ -8,12 +8,12 @@ namespace Cer.Core.Dtos
     public class InvoiceDto : BaseDto
     {
         [DataMember]
-        public string Title { get; private set; }
+        public string Title { get; internal set; }
         [DataMember]
-        public IEnumerable<RentalDto> Rentals { get; private set; }
+        public IEnumerable<RentalDto> Rentals { get; internal set; }
         [DataMember]
-        public decimal TotalPrice { get; private set; }
+        public decimal TotalPrice { get; internal set; }
         [DataMember]
-        public decimal LoyaltyPoints { get; private set; }
+        public decimal LoyaltyPoints { get; internal set; }
     }
 }

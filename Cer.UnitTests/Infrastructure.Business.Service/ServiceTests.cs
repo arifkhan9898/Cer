@@ -3,7 +3,9 @@ using Cer.Core.Dtos;
 using Cer.Core.Enum;
 using Cer.Core.Interfaces;
 using Cer.Core.Models;
+using Cer.Infrastructure.Interfaces;
 using Cer.Service;
+using Cer.Service.Logics;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
@@ -15,20 +17,23 @@ namespace Cer.UnitTests.Infrastructure.Business.Service
     {
         private RentalService _rentalService;
         private IRepository<Cart> _carts;
-        private IRepository<CartEquipment> _cartEquipments;
+        private IWriteDbContext _writeDbContext;
         private IRepository<Equipment> _equipments;
         private IMapper<Equipment, EquipmentDto> _mapEquipmentDto;
         private IDateTimeProvider _dateTimeProvider;
-
+        private ILoyaltyPointsLogic _loyaltyPointsLogic;
+        private IMapper<EquipmentType, PriceCalculatorLogic> _priceCalculatorLogic;
         [SetUp]
         public void Init()
         {
             _carts = Mock.Of<IRepository<Cart>>();
-            _cartEquipments = Mock.Of<IRepository<CartEquipment>>();
+            _writeDbContext = Mock.Of<IWriteDbContext>();
             _equipments = Mock.Of<IRepository<Equipment>>();
             _mapEquipmentDto = Mock.Of<IMapper<Equipment, EquipmentDto>>();
             _dateTimeProvider = Mock.Of<IDateTimeProvider>();
-            _rentalService = new RentalService(_carts, _cartEquipments, _equipments, _mapEquipmentDto, _dateTimeProvider);
+            _loyaltyPointsLogic = Mock.Of<ILoyaltyPointsLogic>();
+            _priceCalculatorLogic = Mock.Of<IMapper<EquipmentType, PriceCalculatorLogic>>();
+            _rentalService = new RentalService(_carts, _writeDbContext, _equipments, _mapEquipmentDto, _dateTimeProvider, _loyaltyPointsLogic, _priceCalculatorLogic);
         }
 
         [Test]
