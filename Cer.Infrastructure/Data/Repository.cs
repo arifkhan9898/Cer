@@ -30,7 +30,7 @@ namespace Cer.Infrastructure.Data
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            
+
             TryInvokeDatabaseAction(() =>
             {
                 Entities.Add(entity);
@@ -77,6 +77,16 @@ namespace Cer.Infrastructure.Data
 
                 throw new Exception(msg, dbEx);
             }
+        }
+
+        public IReadOnlyList<T> Filter(ISpecification<T> specification, int skip = 0, int take = 1000)
+        {
+            return _entities
+                .AsQueryable()
+                .Where(specification.Act)
+                .Skip(skip)
+                .Take(take)
+                .ToList();
         }
     }
 }

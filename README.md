@@ -74,7 +74,12 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 
 ### v. 0.1.2
 - [x] Implemented business logic 
-- [x] Add nlog to webapi and webui 
+- [x] Add nlog to webapi and webui (config not done)
+
+### v. 0.1.3
+- [x] Implemented specification pattern 
+- [x] Implemented strategy pattern 
+- [x] rewrite logic as strategies and specifications
 
 ## Todo
 - [ ] Tests

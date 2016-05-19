@@ -8,6 +8,7 @@
         Running = 3,
         ContinuePending = 4,
         PausePending = 5,
-        Paused = 6
+        Paused = 6,
+        Done = 7
     }
 }

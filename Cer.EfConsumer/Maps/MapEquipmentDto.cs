@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Cer.Core.Dtos;
-using Cer.Core.Enum;
 using Cer.Core.Interfaces;
 using Cer.Core.Models;
-using Cer.Service.Logics;
 
 namespace Cer.Service.Maps
 {
@@ -24,23 +20,6 @@ namespace Cer.Service.Maps
                 EquipmentName = equipment.EquipmentName,
                 EquipmentType = equipment.EquipmentType
             };
-        };
-    }
-    public class MapPriceCalculatorLogic : IMapper<EquipmentType, PriceCalculatorLogic>
-    {
-
-        public Func<EquipmentType, PriceCalculatorLogic> Create => equipment =>
-        {
-            var known = new Dictionary<EquipmentType, PriceCalculatorLogic>
-            {
-                { EquipmentType.Heavy, new HeavyPriceCalculatorLogic()},
-                { EquipmentType.Specialized, new SpecializedPriceCalculatorLogic()},
-                { EquipmentType.Regular, new RegularPriceCalculatorLogic()}
-            };
-            if (!known.ContainsKey(equipment))
-                throw new ArgumentException();
-
-            return known[equipment];
         };
     }
 }

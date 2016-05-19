@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Cer.Core.Enum;
 
-namespace Cer.Service.Logics
+namespace Cer.Service.Interfaces
 {
-    public interface ILoyaltyPointsLogic
+    public interface ILoyaltyPointsService
     {
         decimal GetLoyaltyPoints(IEnumerable<EquipmentType> equipmentTypes);
     }

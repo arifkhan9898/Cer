@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cer.Core.Enum;
+using Cer.Service.Interfaces;
 
-namespace Cer.Service.Logics
+namespace Cer.Service.Services
 {
-    public class LoyaltyPointsLogic : ILoyaltyPointsLogic
+    public class LoyaltyPointsService : ILoyaltyPointsService
     {
         public decimal GetLoyaltyPoints(IEnumerable<EquipmentType> equipmentTypes)
         {

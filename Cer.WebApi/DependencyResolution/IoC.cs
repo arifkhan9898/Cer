@@ -24,8 +24,9 @@ using Cer.Infrastructure.Contextes;
 using Cer.Infrastructure.Data;
 using Cer.Infrastructure.Interfaces;
 using Cer.Service;
-using Cer.Service.Logics;
+using Cer.Service.Interfaces;
 using Cer.Service.Maps;
+using Cer.Service.Services;
 using StructureMap;
 using StructureMap.Graph;
 namespace Cer.WebApi.DependencyResolution
@@ -49,7 +50,7 @@ namespace Cer.WebApi.DependencyResolution
                 x.For(typeof(IRentalService)).Use(typeof(RentalService));
                 x.For(typeof(IWriteDbContext)).Use(typeof(CerDbContext));
                 x.For(typeof(IMapper<Equipment, EquipmentDto>)).Use(typeof(MapEquipmentDto));
-                x.For(typeof(IMapper<EquipmentType, PriceCalculatorLogic>)).Use(typeof(MapPriceCalculatorLogic));
+                x.For(typeof(IMapper<EquipmentType, IRentalCostStrategy>)).Use(typeof(MapRentalCostStrategy));
             });
 
             return ObjectFactory.Container;

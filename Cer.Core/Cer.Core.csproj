@@ -49,6 +49,8 @@
     <Compile Include="Dtos\ViewDto.cs" />
     <Compile Include="Enum\RentState.cs" />
     <Compile Include="Enum\EquipmentType.cs" />
+    <Compile Include="Interfaces\IFilterRepository.cs" />
+    <Compile Include="Interfaces\ISpecification.cs" />
     <Compile Include="Models\EquipmentAmount.cs" />
     <Compile Include="Interfaces.Models\IEquipmentAmount.cs" />
     <Compile Include="Interfaces\IDateTimeProvider.cs" />
@@ -71,9 +73,6 @@
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

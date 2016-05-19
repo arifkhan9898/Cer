@@ -34,6 +34,6 @@ namespace Cer.Infrastructure.Contextes
             return base.Set<TEntity>();
         }
 
-        public System.Data.Entity.DbSet<Cer.Core.Dtos.EquipmentDto> EquipmentDtoes { get; set; }
+        public DbSet<Core.Dtos.EquipmentDto> EquipmentDtoes { get; set; }
     }
 }
