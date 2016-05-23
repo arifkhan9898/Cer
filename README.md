@@ -86,6 +86,9 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 - [x] Add integration test
 - [x] Refactor
 
+### v. 0.1.5
+- [x] Add UI catalog behavior basics
+
 ## Todo
 - [ ] Tests
 - [ ] Add localization 

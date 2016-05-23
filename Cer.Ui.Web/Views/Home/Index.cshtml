@@ -13,10 +13,10 @@
     <link rel="home" id="ApplicationPath" href="/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link href="/Content/bootstrap.css?v=W6N62RY2Q8MiUTZnVPCLKg2" rel="stylesheet" type="text/css" />
-    <link href="/Content/site.css?v=uwjznzwqbnZDAaF4fSfu8Q2" rel="stylesheet" type="text/css" />
+    <link href="/Content/site.css?v=uwjznzwqbnZDAaF4fSfu8Q2" rel="stylesheet" type="text/css"/>
+    <link href="~/Scripts/jquery.bootgrid.min.css" rel="stylesheet"/>
 
-    <script src="/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="/Scripts/app.js" type="text/javascript"></script>
+
     <script type="application/json" id="ScriptCulture">
         {"DateOrder":"mdy","DateFormat":"MM/dd/yyyy","DateSeparator":"/","DateTimeFormat":"MM/dd/yyyy HH:mm:ss","DecimalSeparator":".","GroupSepearator":","}
     </script>
@@ -29,201 +29,156 @@
         };
     </script>
 
+    <script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>
     <script src="/Scripts/jquery.validate.js?v=n-VHJ2CiW0lEgUCLuaY31g2" type="text/javascript"></script>
-    <script src="/Scripts/jquery.event.drag.js?v=Jh0aUpZ6m9qciziEDSwmXA2" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-    <script>
-        var template = '<span style="color:{0};">{1}</span>';
 
-        var change = function (value) {
-            return Ext.String.format(template, (value > 0) ? "green" : "red", value);
-        };
-
-        var pctChange = function (value) {
-            return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
-        };
-
-        function fillDetails(value) {
-            $("#detailsName").val(value.data.Name);
-            $("#detailsType").val(value.data.Type);
-            $("#detailsDuration").val(1);
-            $("#detailsId").text(value.data.Id);
-        };
-
-        function addOrder(value) {
-            var id = $("#detailsId").text();
-            var r = Ext.create('Order',
-                {
-                    Id: id,
-                    Type: $("#detailsType").val(),
-                    Name: $("#detailsName").val(),
-                    Duration: $("#detailsDuration").val(),
-                    TimeAdded: Ext.Date.clearTime(new Date())
-                }),
-                grid = value.up("gridpanel");
-
-            grid.store.insert(0, r);
-            grid.editingPlugin.startEditByPosition({ row: 0, column: 0 });
-        }
-
-        function getInvoice(value) {
-
-        }
-        $(function () {
-            String.prototype.format = function () {
-                var args = arguments;
-                return this.replace(/{(\d+)}/g,
-                    function (match, number) {
-                        return typeof args[number] != 'undefined' ? args[number] : match;
-                    });
-            };
-        });
-        function submitCart(value, info, lol) {
-            var url = "api/RentCart?commaSeparatedIds={0}&viewStateTime={1}";
-            var items = value;
-            var time = value;
-
-            $.ajax({
-                url: url,
-                jsonp: "callback",
-                dataType: "jsonp",
-                success: function (data) { },
-                error: function (data) { }
-            });
-        }
-
-        function enumType(dataIndex) {
-            switch (dataIndex) {
-                case 1:
-                    return 'Heavy';
-                case 2:
-                    return 'Regular';
-                case 3:
-                    return 'Specialized';
-            }
-            return 'Unknown';
-        }
-    </script>
     <title>Equipment catalog</title>
 </head>
 <body id="s-Page" class="fixed sidebar-mini hold-transition skin-green-light has-layout-event">
 
-    <div class="wrapper">
+<div class="wrapper">
 
-        <div class="content-wrapper">
-            <section class="content-header container"></section>
-            <section class="content-header ">
+    <div class="content-wrapper">
+        <section class="content-header container"></section>
+        <section class="content-header ">
 
-                <h1>
-                    Equipment<small>
-                        todo: add a timestamp, resize after orientation/dimension change, set up paging, implement search,
-                        type format in details, input validation, disallow an ability to add empty / duplicate instances, time format,
-                        currency format, right-to-left support.
-                    </small>
-                </h1>
+            <h1>
+                Equipment<small>
+                    todo: add a timestamp, resize after orientation/dimension change, set up paging, implement search,
+                    type format in details, input validation, disallow an ability to add empty / duplicate instances, time format,
+                    currency format, right-to-left support.
+                </small>
+            </h1>
 
-            </section>
-            <section class="content ">
+        </section>
+        <section class="content ">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Catalog</h3>
-                                <div class="box-tools pull-right">
-                                    <div class="has-feedback">
-                                        <input type="text" class="form-control input-sm" placeholder="Search Equipment" disabled="disabled">
-                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                    </div>
+            <div class="row">
+                <div id="catalog" class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Catalog</h3>
+                            <div class="box-tools pull-right">
+                                <div class="has-feedback">
+                                    <input type="text" class="form-control input-sm" placeholder="Search Equipment" disabled="disabled">
+
                                 </div>
                             </div>
-                            <div class="box-body no-padding">
-                                <div id="grid-1" class="table-responsive mailbox-messages">
-
-                                </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div class="mailbox-messages">
+                                <table id="grid-basic-1" class="table table-condensed table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-column-id="name">Name</th>
+                                        <th data-column-id="type" data-order="desc">Type</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="grid-1">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div id="detailsContainer" class="col-md-12">
-                        <div class="box box-primary">
-                            <div class="box box-solid">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Order details</h3> <span class="pull-right">id: <span id="detailsId"></span></span>
-                                </div>
-
-                                <div class="box-body no-padding">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="detailsName" class="col-md-12 control-label">Name :</label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="detailsName" Class="form-control form-fixer" disabled />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="detailsType" class="col-md-12 control-label">Type :</label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="detailsType" Class="form-control form-fixer" disabled />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="detailsDuration" class="col-md-12 control-label">Duration :</label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="detailsDuration" Class="form-control form-fixer" />
-                                            </div>
-                                        </div>
-                                        <span>&nbsp;</span>
-                                        <!--
-
-                                        <div class="form-actions">
-                                            <div class="btn-group col-xs-12" role="group" aria-label="...">
-                                                <button id="detailsCancel" type="button" class="btn col-xs-6 btn-default">Cancel</button>
-                                                <button id="detailsAdd" type="button" class="btn col-xs-6 btn-primary">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                        <span>&nbsp;</span>
-                                        -->
-                                    </form>
-                                </div>
+                </div>
+                <div id="detailsContainer" class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Order details</h3> <span class="pull-right">id: <span id="detailsId"></span></span>
                             </div>
 
+                            <div class="box-body no-padding">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="detailsName" class="col-md-12 control-label">Name :</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="detailsName" Class="form-control form-fixer" disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="detailsType" class="col-md-12 control-label">Type :</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="detailsType" Class="form-control form-fixer" disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="detailsDuration" class="col-md-12 control-label">Duration :</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="detailsDuration" Class="form-control form-fixer"/>
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;</span>
+                                    <div class="form-actions">
+                                        <div class="btn-group col-xs-12" role="group" aria-label="...">
+                                            <button id="detailsCancel" type="button" class="btn col-xs-6 btn-default">Cancel</button>
+                                            <button id="detailsAdd" type="button" class="btn col-xs-6 btn-primary">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;</span>
+                                    
+                                </form>
+                            </div>
                         </div>
-                        <span>
+
+                    </div>
+                    <span>
                             Todo: might need quantity, location, availability
                         </span>
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Cart</h3> <span>todo: do not add empty / duplicate instances, time format</span>
-                            </div>
-                            <div class="box-body no-padding">
-                                <div id="grid-2" class="table-responsive mailbox-messages">
-
+                </div>
+                <div id="cart" class="col-md-12 col-sm-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Cart</h3> <span>todo: do not add empty / duplicate instances, time format</span>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div class="mailbox-messages">
+                                <table id="grid-basic-2" class="table table-condensed table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-column-id="name">Name</th>
+                                        <th data-column-id="type" data-order="desc">Type</th>
+                                        <th data-column-id="type">Duration</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="grid-2"></tbody>
+                                </table>
+                                <span>&nbsp;</span>
+                                <div class="form-actions">
+                                    <div class="btn-group col-xs-12" role="group" aria-label="...">
+                                        <button id="cartCancel" type="button" class="btn col-xs-6 btn-default">Cancel</button>
+                                        <button id="cartAdd" type="button" class="btn col-xs-6 btn-primary">Order</button>
+                                    </div>
                                 </div>
+                                <span>&nbsp;</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Subscribtions</h3> <span>todo: add item availability checks</span>
-                            </div>
-                            <div class="box-body no-padding">
-                                <div id="grid-3" class="table-responsive mailbox-messages">
+                </div>
+                <div id="subscribtions" class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Subscribtions</h3> <span>todo: add item availability checks</span>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div id="grid-3" class="mailbox-messages">
 
-                                </div>
                             </div>
                         </div>
-                        <span>
+                    </div>
+                    <span>
                             Todo: Add service that processes subscriptions, if any item is unavailable ask user confirmation
                             - user might only want a bundle or nothing at all.
                         </span>
-                    </div>
-
                 </div>
-            </section>
-        </div>
-        <div class="control-sidebar-bg"></div>
+
+            </div>
+        </section>
     </div>
+    <div class="control-sidebar-bg"></div>
+</div>
+    <script src="~/Scripts/app.js" type="text/javascript"></script>
 </body>
 </html>
