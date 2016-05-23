@@ -89,6 +89,9 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 ### v. 0.1.5
 - [x] Add UI catalog behavior basics
 
+### v. 0.1.5
+- [x] Add UI behavior basics
+
 ## Todo
 - [ ] Tests
 - [ ] Add localization 

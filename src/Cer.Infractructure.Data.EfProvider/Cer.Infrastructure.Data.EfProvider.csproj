@@ -57,17 +57,9 @@
     <Compile Include="Interfaces\IWriteDbContext.cs" />
     <Compile Include="Mapping\EquipmentItemMap.cs" />
     <Compile Include="Mapping\RentCartMap.cs" />
-    <Compile Include="Migrations\201605141619025_initalDb.cs" />
-    <Compile Include="Migrations\201605141619025_initalDb.Designer.cs">
-      <DependentUpon>201605141619025_initalDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605151037079_changes133715052016.cs" />
-    <Compile Include="Migrations\201605151037079_changes133715052016.Designer.cs">
-      <DependentUpon>201605151037079_changes133715052016.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605160418422_changes071216052016.cs" />
-    <Compile Include="Migrations\201605160418422_changes071216052016.Designer.cs">
-      <DependentUpon>201605160418422_changes071216052016.cs</DependentUpon>
+    <Compile Include="Migrations\201605230611225_initial20160523.cs" />
+    <Compile Include="Migrations\201605230611225_initial20160523.Designer.cs">
+      <DependentUpon>201605230611225_initial20160523.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,14 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605141619025_initalDb.resx">
-      <DependentUpon>201605141619025_initalDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605151037079_changes133715052016.resx">
-      <DependentUpon>201605151037079_changes133715052016.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605160418422_changes071216052016.resx">
-      <DependentUpon>201605160418422_changes071216052016.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605230611225_initial20160523.resx">
+      <DependentUpon>201605230611225_initial20160523.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

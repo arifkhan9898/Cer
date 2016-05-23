@@ -34,6 +34,11 @@
             });
             $("#cartAdd").click(function () {
                 //Todo
+                var data = "";
+                $.each($("#grid-2 tr"), function (i, item) {
+                    data += $.Rental.Format("{0},{1}-", $(item).data("id"), $(item).data("duration"));
+                });
+                $.Rental.LoadRentCart(data);
             });
 
             $.Rental.LoadEquipment(0);
@@ -73,12 +78,28 @@
 
                         $("#detailsContainer").show();
                         $("#catalog").hide();
-                        
+
                     });
                     //Todo: find out why bootgrid does not work: $("#grid-basic").bootgrid();
                 },
                 error: function () {
                     console.log("Equipment data failed to loaded");
+                }
+            });
+        }
+        $.Rental.LoadRentCart = function (data) {
+            $.ajax({
+                url: $.Rental.Path + $.Rental.Format("api/RentCart?commaSeparatedIdAndDurationTuples={0}", data),
+                jsonp: "callback",
+                dataType: "jsonp",
+                success: function (data) {
+                    console.log("Cart data loaded");
+                    var template = $.Rental.Format("<tr data-id='" + data.CartId + "'><td><a href='" + $.Rental.Path + "api/Invoice/" +data.CartId+ "'>Subscription : " + data.CartId + "</a></td></tr>");
+                    $("#grid-3").append(template);
+                    $("#subscribtions").show();
+                },
+                error: function () {
+                    console.log("Cart data failed to loaded");
                 }
             });
         }

@@ -1,11 +1,22 @@
-using System.Data.Entity.Migrations;
-
 namespace Cer.Infrastructure.Data.EfProvider.Migrations
 {
-    public partial class initalDb : DbMigration
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class initial20160523 : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.EquipmentDtoes",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        EquipmentName = c.String(),
+                        EquipmentType = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Equipments",
                 c => new
@@ -33,6 +44,7 @@ namespace Cer.Infrastructure.Data.EfProvider.Migrations
                         EquipmentId = c.Int(nullable: false),
                         ReturnDate = c.DateTime(),
                         RentState = c.Int(nullable: false),
+                        RentDurationDays = c.Int(nullable: false),
                         RentStateId = c.Int(nullable: false),
                         AddedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
@@ -52,7 +64,6 @@ namespace Cer.Infrastructure.Data.EfProvider.Migrations
                     {
                         Id = c.Long(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
-                        RentDurationDays = c.Int(nullable: false),
                         AddedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
                         Ip = c.String(),
@@ -103,6 +114,7 @@ namespace Cer.Infrastructure.Data.EfProvider.Migrations
             DropTable("dbo.Carts");
             DropTable("dbo.CartEquipments");
             DropTable("dbo.Equipments");
+            DropTable("dbo.EquipmentDtoes");
         }
     }
 }

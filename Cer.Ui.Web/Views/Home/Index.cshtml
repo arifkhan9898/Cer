@@ -56,6 +56,53 @@
         <section class="content ">
 
             <div class="row">
+                <div id="subscribtions" class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Subscribtions</h3> <span>todo: add item availability checks</span>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div id="grid-3" class="mailbox-messages">
+
+                            </div>
+                        </div>
+                    </div>
+                    <span>
+                        Todo: Add service that processes subscriptions, if any item is unavailable ask user confirmation
+                        - user might only want a bundle or nothing at all.
+                    </span>
+                </div>
+
+                <div id="cart" class="col-md-12 col-sm-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Cart</h3> <span>todo: do not add empty / duplicate instances, time format</span>
+                        </div>
+                        <div class="box-body no-padding">
+                            <div class="mailbox-messages">
+                                <table id="grid-basic-2" class="table table-condensed table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-column-id="name">Name</th>
+                                        <th data-column-id="type" data-order="desc">Type</th>
+                                        <th data-column-id="type">Duration</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="grid-2"></tbody>
+                                </table>
+                                <span>&nbsp;</span>
+                                <div class="form-actions">
+                                    <div class="btn-group col-xs-12" role="group" aria-label="...">
+                                        <button id="cartCancel" type="button" class="btn col-xs-6 btn-default">Cancel</button>
+                                        <button id="cartAdd" type="button" class="btn col-xs-6 btn-primary">Order</button>
+                                    </div>
+                                </div>
+                                <span>&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="catalog" class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -128,52 +175,6 @@
                             Todo: might need quantity, location, availability
                         </span>
                 </div>
-                <div id="cart" class="col-md-12 col-sm-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Cart</h3> <span>todo: do not add empty / duplicate instances, time format</span>
-                        </div>
-                        <div class="box-body no-padding">
-                            <div class="mailbox-messages">
-                                <table id="grid-basic-2" class="table table-condensed table-hover table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th data-column-id="name">Name</th>
-                                        <th data-column-id="type" data-order="desc">Type</th>
-                                        <th data-column-id="type">Duration</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="grid-2"></tbody>
-                                </table>
-                                <span>&nbsp;</span>
-                                <div class="form-actions">
-                                    <div class="btn-group col-xs-12" role="group" aria-label="...">
-                                        <button id="cartCancel" type="button" class="btn col-xs-6 btn-default">Cancel</button>
-                                        <button id="cartAdd" type="button" class="btn col-xs-6 btn-primary">Order</button>
-                                    </div>
-                                </div>
-                                <span>&nbsp;</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="subscribtions" class="col-md-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Subscribtions</h3> <span>todo: add item availability checks</span>
-                        </div>
-                        <div class="box-body no-padding">
-                            <div id="grid-3" class="mailbox-messages">
-
-                            </div>
-                        </div>
-                    </div>
-                    <span>
-                            Todo: Add service that processes subscriptions, if any item is unavailable ask user confirmation
-                            - user might only want a bundle or nothing at all.
-                        </span>
-                </div>
-
             </div>
         </section>
     </div>
