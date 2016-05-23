@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9BB30498-9974-44FB-942E-B28495264116}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cer.Infrastructure.Business.Service</RootNamespace>
+    <AssemblyName>Cer.Infrastructure.Business.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\ILoyaltyPointsStrategy.cs" />
+    <Compile Include="Services\RentalService.cs" />
+    <Compile Include="cemetary\RentalService2.cs" />
+    <Compile Include="Specifications\CartEquipmentByCartIdSpecification.cs" />
+    <Compile Include="Strategies.LoyaltyPoints\RegularLoyaltyPointsStrategy.cs" />
+    <Compile Include="Interfaces\IRentalCostStrategyProvider.cs" />
+    <Compile Include="Providers\RentalCostStrategyProvider.cs" />
+    <Compile Include="Implementations\Specification.cs" />
+    <Compile Include="Interfaces\IPriceConfiguration.cs" />
+    <Compile Include="Maps\MapRentalCostStrategy.cs" />
+    <Compile Include="QueryHandlers\CartDtoQueryHandler.cs" />
+    <Compile Include="QueryHandlers\EquipmentViewDtoQueryHandler.cs" />
+    <Compile Include="QueryHandlers\InvoiceDtoQueryHandler.cs" />
+    <Compile Include="cemetary\RentalService.cs" />
+    <Compile Include="Specifications\EquipmentAvailabilitySpecification.cs" />
+    <Compile Include="Strategies.RentalCost\HeavyRentalCostStrategy.cs" />
+    <Compile Include="Interfaces\ILoyaltyPointsProvider.cs" />
+    <Compile Include="Interfaces\IRentalCostStrategy.cs" />
+    <Compile Include="Providers\LoyaltyPointsProvider.cs" />
+    <Compile Include="Implementations\EuroMutablePriceConfiguration.cs" />
+    <Compile Include="Strategies.RentalCost\RegularRentalCostStrategy.cs" />
+    <Compile Include="Strategies.RentalCost\SpecializedRentalCostStrategy.cs" />
+    <Compile Include="Maps\MapEquipmentDto.cs" />
+    <Compile Include="Maps\MapEquipmentViewDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\SystemDateTimeProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cer.Core\Cer.Core.csproj">
+      <Project>{BAA64AF4-3871-408A-9420-5A526BCC2BB3}</Project>
+      <Name>Cer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cer.Infractructure.Data.EfProvider\Cer.Infrastructure.Data.EfProvider.csproj">
+      <Project>{413D0887-9C4F-4E95-85B4-6D082557AFEE}</Project>
+      <Name>Cer.Infrastructure.Data.EfProvider</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

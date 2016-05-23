@@ -81,6 +81,11 @@ This assumes you have admin rights in the server, if you do not, acquire them or
 - [x] Implemented strategy pattern 
 - [x] rewrite logic as strategies and specifications
 
+### v. 0.1.4
+- [x] Add unit tests
+- [x] Add integration test
+- [x] Refactor
+
 ## Todo
 - [ ] Tests
 - [ ] Add localization 
